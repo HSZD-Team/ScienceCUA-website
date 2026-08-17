@@ -124,9 +124,17 @@ h3 {
 .hero-text {
   max-width: 700px;
   margin-inline: auto;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   color: var(--muted);
   font-size: clamp(18px, 2vw, 22px);
+}
+
+.dataset-text {
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: 28px;
+  color: #4f5d6d;
+  font-size: 17px;
 }
 
 .hero-actions {
