@@ -1,0 +1,178 @@
+[
+  {
+    "id": "kalgebra",
+    "name": "KAlgebra",
+    "domain": "Mathematics & plotting",
+    "skillSource": "KALgebra/entries/kalgebra-skill-plot-an-explicit-function-of-x-and-y-in-3d/SKILL.md",
+    "referenceSource": "KALgebra/entries/kalgebra-reference-kalgebra-3d-plot-constraints-and-controls/content.md",
+    "skill": {
+      "title": "Plot an explicit function in 3D",
+      "description": "Turn a function of two variables into a 3D surface using the graph input.",
+      "steps": [
+        ["Open the 3D workspace", "Select the 3D Graph tab and locate the input field at the bottom."],
+        ["Define the surface", "Use an explicit function that depends only on x and y; z is not an input variable."],
+        ["Enter the expression", "Type the function in mapping form, such as the documented example below."]
+      ],
+      "codeLabel": "Example expression",
+      "code": "(x,y)->sin(x)*sin(y)"
+    },
+    "reference": {
+      "title": "3D plot syntax and controls",
+      "description": "Input constraints, navigation controls, and export actions available across plotting tasks.",
+      "rows": [
+        ["(x,y)->x*y", "An explicit surface with z = x*y; only x and y are input variables."],
+        ["Mouse wheel", "Zoom in or out. W and S also control zoom."],
+        ["Left-button drag", "Rotate the graph; arrow keys rotate around the documented axes."],
+        ["Reset View", "Restore the original view and zoom from the 3D Graph menu."],
+        ["Ctrl+S", "Save the graph as an image or a supported document."]
+      ]
+    }
+  },
+  {
+    "id": "celestia",
+    "name": "Celestia",
+    "domain": "Astronomy & simulation",
+    "skillSource": "Celestia/entries/celestia-skill-find-and-observe-a-solar-or-lunar-eclipse/SKILL.md",
+    "referenceSource": "Celestia/entries/celestia-reference-celestia-1-6-1-time-controls-and-date-constra/content.md",
+    "skill": {
+      "title": "Find and observe an eclipse",
+      "description": "Locate a solar or lunar eclipse, travel to the event, and control its progression.",
+      "steps": [
+        ["Enable eclipse shadows", "Open Render → View Options and enable Eclipse Shadows."],
+        ["Define the search", "Open Navigation → Eclipse Finder and choose the type, planet, and date range. For Jupiter through Neptune, keep the range to one year or less."],
+        ["Travel to the event", "Click Compute, select an eclipse, then use the set-date-and-GoTo button and close the dialog."],
+        ["Control and restore time", "Press L to accelerate. Use the backslash key to restore the real-time rate, then Time → Set Time → Set to Current time to return to the present."]
+      ]
+    },
+    "reference": {
+      "title": "Time controls and date settings",
+      "description": "Reusable key mappings distinguish the simulation rate from the selected date and time.",
+      "rows": [
+        ["L / K", "Make time 10× faster or slower with each press."],
+        ["Shift+L / Shift+K", "Make time 2× faster or slower with each press."],
+        ["Spacebar / J", "Pause time, or reverse its direction."],
+        ["\\", "Return the simulation to the real-time rate."],
+        ["Set to Current time", "Restore the present date and time in the Set Time dialog."]
+      ]
+    }
+  },
+  {
+    "id": "grass",
+    "name": "GRASS GIS",
+    "domain": "Geospatial analysis",
+    "skillSource": "GRASS GIS/entries/grass-gis-skill-display-a-filtered-labeled-vector-map-with-d-vec/SKILL.md",
+    "referenceSource": "GRASS GIS/entries/grass-gis-reference-d-vect-parameters/content.md",
+    "skill": {
+      "title": "Display a filtered, labeled vector map",
+      "description": "Select vector features by attribute and render their geometry with readable labels.",
+      "steps": [
+        ["Choose the map", "Prepare d.vect with the vector map name and display=shape in an active graphics frame."],
+        ["Filter the features", "Use cats for categories or where for an SQL condition, omitting the WHERE keyword."],
+        ["Set labels and colors", "Choose attribute_column for labels. Set feature and fill colors, or use -c for category-based random colors."],
+        ["Render the selection", "Run the assembled command. The library includes this example using the Spearfish soils map."]
+      ],
+      "codeLabel": "Documented command",
+      "code": "d.vect -c map=soils where=\"label='VBF'\" display=shape attribute_column=label"
+    },
+    "reference": {
+      "title": "d.vect parameters",
+      "description": "Shared parameter definitions for drawing and labeling vector features.",
+      "rows": [
+        ["map", "Required vector map name; layer selects the attribute table and defaults to 1."],
+        ["display=shape", "Draw feature geometry in the active graphics frame."],
+        ["where", "SQL selection condition without the WHERE keyword."],
+        ["attribute_column", "Attribute column whose values are displayed as labels."],
+        ["-c", "Assign random colors by category; with layer=-1, use layer numbers."]
+      ]
+    }
+  },
+  {
+    "id": "chimerax",
+    "name": "ChimeraX",
+    "domain": "Molecular visualization",
+    "skillSource": "ChimeraX/entries/chimerax-skill-select-a-residue-and-display-its-atoms-as-sticks/SKILL.md",
+    "referenceSource": "ChimeraX/entries/chimerax-reference-target-specification-syntax/content.md",
+    "skill": {
+      "title": "Show a selected residue as sticks",
+      "description": "Use interactive selection to change the representation of one residue in a displayed structure.",
+      "steps": [
+        ["Select an atom", "With the default mouse assignment, Ctrl-click an atom in the desired residue to replace the previous selection."],
+        ["Expand to the residue", "Keep focus in the graphics window and press the up arrow once."],
+        ["Apply the representation", "Run style sel stick. The sel target limits the command to the current selection."]
+      ],
+      "codeLabel": "Command for the current selection",
+      "code": "style sel stick"
+    },
+    "reference": {
+      "title": "Target specification syntax",
+      "description": "A common hierarchy identifies models, chains, residues, and atoms across commands.",
+      "rows": [
+        ["#1", "Model 1, including its submodels."],
+        ["/A", "Chain A; chain IDs are generally case-insensitive unless both cases occur."],
+        [":51", "Residue number 51; a residue name can also follow the colon."],
+        ["@ca", "Atoms named CA."],
+        ["sel", "The current selection, reusable as a command target."]
+      ]
+    }
+  },
+  {
+    "id": "lean",
+    "name": "Lean 4",
+    "domain": "Formal reasoning",
+    "skillSource": "Lean 4/entries/lean-4-skill-prove-natural-number-equalities-using-induction-and/SKILL.md",
+    "referenceSource": "Lean 4/entries/lean-4-reference-lean-tactic-commands-and-goal-effects/content.md",
+    "skill": {
+      "title": "Prove an equality by induction",
+      "description": "Prove 0 + n = n by following the recursive structure of natural-number addition.",
+      "steps": [
+        ["State the goal", "Introduce n : Nat and begin the theorem's tactic proof with by."],
+        ["Split the cases", "Use induction n with to create zero and successor branches, naming the induction hypothesis ih."],
+        ["Close the base case", "Use rfl when the zero case reduces to reflexive equality."],
+        ["Rewrite the successor case", "Apply the successor equation and then the induction hypothesis with rw [Nat.add_succ, ih]."]
+      ],
+      "codeLabel": "Proof from the library",
+      "code": "namespace Hidden\n\ntheorem zero_add (n : Nat) : 0 + n = n := by\n  induction n with\n  | zero => rfl\n  | succ n ih => rw [Nat.add_succ, ih]\n\nend Hidden"
+    },
+    "reference": {
+      "title": "Tactic commands and goal effects",
+      "description": "Reusable rules explain how individual tactics transform or close proof goals.",
+      "rows": [
+        ["by", "Enter tactic mode where a proof term is expected."],
+        ["rfl", "Close a reflexive relation when its arguments are definitionally equal."],
+        ["rw [h]", "Use an equality to substitute in a goal or hypothesis."],
+        ["rw [h₁, h₂]", "Apply several rewrites in sequence."],
+        ["apply / exact", "Apply an expression and create remaining goals, or supply a term that fills the goal exactly."]
+      ]
+    }
+  },
+  {
+    "id": "texstudio",
+    "name": "TeXstudio",
+    "domain": "Scientific writing",
+    "skillSource": "TeXstudio/entries/texstudio-skill-configure-a-separate-pdflatex-build-folder-in-te/SKILL.md",
+    "referenceSource": "TeXstudio/entries/texstudio-reference-tool-command-placeholders-and-modifiers/content.md",
+    "skill": {
+      "title": "Keep pdfLaTeX output in a build folder",
+      "description": "Route generated files into a subfolder and keep TeXstudio's log and PDF lookup in sync.",
+      "steps": [
+        ["Open configuration", "Open Options → Configure TeXstudio and show advanced options if the settings are hidden."],
+        ["Set the output folder", "Under Commands, add -output-directory=build to the pdfLaTeX command."],
+        ["Update the log search path", "Under Build → Build options, add build as an additional search folder for log files."],
+        ["Update the PDF search path", "Add build for PDF files too. The documented Clean Auxiliary Files dialog does not clean files stored in a different folder this way."]
+      ],
+      "codeLabel": "pdfLaTeX command argument",
+      "code": "-output-directory=build"
+    },
+    "reference": {
+      "title": "Tool command placeholders",
+      "description": "Shared placeholders and modifiers used when configuring TeXstudio tool commands.",
+      "rows": [
+        ["%", "The root document's filename without its extension."],
+        ["@", "The current line number."],
+        ["[txs-app-dir]", "The location of the TeXstudio executable."],
+        ["[txs-settings-dir]", "The location of the texstudio.ini settings file."],
+        ["&", "As the final character, run the command detached without blocking later commands."]
+      ]
+    }
+  }
+]

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ScienceCUA: Resource-to-Skill Construction and Execution-Guided Skill Evolution for Scientific Computer Use Agents.">
     <title>ScienceCUA</title>
-    <link rel="stylesheet" href="styles.css?v=20261020-3">
+    <link rel="stylesheet" href="styles.css?v=20261020-5">
     <script src="contact.js" defer></script>
     <script src="evolution.js" defer></script>
+    <script src="knowledge.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -154,29 +155,228 @@
             <p class="research-eyebrow"><span aria-hidden="true">03 /</span> Skills &amp; References</p>
             <h2 id="examples-title">Reusable workflows. Knowledge on demand.</h2>
             <p class="research-lead">
-              ScienceCUA separates task-level procedures from software knowledge shared across tasks. In KAlgebra, a Skill describes how to add and manage 3D functions, while a Reference supplies command syntax and examples such as <code>power</code> and <code>root</code>. The agent combines both as needed during execution.
+              Skills provide reusable, task-level procedures. References supply shared syntax, parameters, and constraints for on-demand lookup. Explore six examples from the ScienceCUA library, pairing a concrete workflow with related software knowledge.
             </p>
           </header>
 
-          <figure class="research-figure">
-            <a class="figure-surface" href="assets/figures/skills-references.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the full-resolution Skill and Reference example as a PDF">
-              <picture>
-                <source srcset="assets/figures/skills-references.webp" type="image/webp">
-                <img src="assets/figures/skills-references.png" width="2000" height="998" loading="lazy" decoding="async" alt="KAlgebra examples: a Skill gives the ordered steps for adding and rendering a 3D function, while a Reference lists the names, parameters, and examples for the power and root commands.">
-              </picture>
-            </a>
-          </figure>
+          <!-- knowledge-examples:start -->
+          <div class="knowledge-explorer">
+            <div class="knowledge-tabs" role="tablist" aria-label="Choose an application to explore its Skill and Reference" hidden>
+              <button id="knowledge-tab-kalgebra" type="button" role="tab" aria-selected="true" aria-controls="knowledge-panel-kalgebra" tabindex="0">KAlgebra</button>
+              <button id="knowledge-tab-celestia" type="button" role="tab" aria-selected="false" aria-controls="knowledge-panel-celestia" tabindex="-1">Celestia</button>
+              <button id="knowledge-tab-grass" type="button" role="tab" aria-selected="false" aria-controls="knowledge-panel-grass" tabindex="-1">GRASS GIS</button>
+              <button id="knowledge-tab-chimerax" type="button" role="tab" aria-selected="false" aria-controls="knowledge-panel-chimerax" tabindex="-1">ChimeraX</button>
+              <button id="knowledge-tab-lean" type="button" role="tab" aria-selected="false" aria-controls="knowledge-panel-lean" tabindex="-1">Lean 4</button>
+              <button id="knowledge-tab-texstudio" type="button" role="tab" aria-selected="false" aria-controls="knowledge-panel-texstudio" tabindex="-1">TeXstudio</button>
+            </div>
 
-          <dl class="knowledge-types">
-            <div>
-              <dt>Skills <span>Procedural knowledge</span></dt>
-              <dd>Reusable task-level workflows: what to do, in what order, and under which conditions.</dd>
+            <div id="knowledge-panel-kalgebra" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-kalgebra" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>KAlgebra</h3>
+                <p>Mathematics &amp; plotting</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-kalgebra">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-kalgebra">Plot an explicit function in 3D</h4>
+                    <p class="knowledge-description">Turn a function of two variables into a 3D surface using the graph input.</p>
+                    <ol class="knowledge-steps"><li><strong>Open the 3D workspace</strong><p>Select the 3D Graph tab and locate the input field at the bottom.</p></li><li><strong>Define the surface</strong><p>Use an explicit function that depends only on x and y; z is not an input variable.</p></li><li><strong>Enter the expression</strong><p>Type the function in mapping form, such as the documented example below.</p></li></ol>
+                    <div class="knowledge-code"><span>Example expression</span><pre><code>(x,y)-&gt;sin(x)*sin(y)</code></pre></div>
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-kalgebra">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-kalgebra">3D plot syntax and controls</h4>
+                    <p class="knowledge-description">Input constraints, navigation controls, and export actions available across plotting tasks.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">KAlgebra: 3D plot syntax and controls</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>(x,y)-&gt;x*y</code></th><td>An explicit surface with z = x*y; only x and y are input variables.</td></tr><tr><th scope="row"><code>Mouse wheel</code></th><td>Zoom in or out. W and S also control zoom.</td></tr><tr><th scope="row"><code>Left-button drag</code></th><td>Rotate the graph; arrow keys rotate around the documented axes.</td></tr><tr><th scope="row"><code>Reset View</code></th><td>Restore the original view and zoom from the 3D Graph menu.</td></tr><tr><th scope="row"><code>Ctrl+S</code></th><td>Save the graph as an image or a supported document.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
             </div>
-            <div>
-              <dt>References <span>On-demand lookup</span></dt>
-              <dd>Shared software knowledge: commands, syntax, parameter constraints, and examples to consult when needed.</dd>
+            <div id="knowledge-panel-celestia" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-celestia" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>Celestia</h3>
+                <p>Astronomy &amp; simulation</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-celestia">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-celestia">Find and observe an eclipse</h4>
+                    <p class="knowledge-description">Locate a solar or lunar eclipse, travel to the event, and control its progression.</p>
+                    <ol class="knowledge-steps"><li><strong>Enable eclipse shadows</strong><p>Open Render → View Options and enable Eclipse Shadows.</p></li><li><strong>Define the search</strong><p>Open Navigation → Eclipse Finder and choose the type, planet, and date range. For Jupiter through Neptune, keep the range to one year or less.</p></li><li><strong>Travel to the event</strong><p>Click Compute, select an eclipse, then use the set-date-and-GoTo button and close the dialog.</p></li><li><strong>Control and restore time</strong><p>Press L to accelerate. Use the backslash key to restore the real-time rate, then Time → Set Time → Set to Current time to return to the present.</p></li></ol>
+
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-celestia">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-celestia">Time controls and date settings</h4>
+                    <p class="knowledge-description">Reusable key mappings distinguish the simulation rate from the selected date and time.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">Celestia: Time controls and date settings</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>L / K</code></th><td>Make time 10× faster or slower with each press.</td></tr><tr><th scope="row"><code>Shift+L / Shift+K</code></th><td>Make time 2× faster or slower with each press.</td></tr><tr><th scope="row"><code>Spacebar / J</code></th><td>Pause time, or reverse its direction.</td></tr><tr><th scope="row"><code>\</code></th><td>Return the simulation to the real-time rate.</td></tr><tr><th scope="row"><code>Set to Current time</code></th><td>Restore the present date and time in the Set Time dialog.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
             </div>
-          </dl>
+            <div id="knowledge-panel-grass" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-grass" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>GRASS GIS</h3>
+                <p>Geospatial analysis</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-grass">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-grass">Display a filtered, labeled vector map</h4>
+                    <p class="knowledge-description">Select vector features by attribute and render their geometry with readable labels.</p>
+                    <ol class="knowledge-steps"><li><strong>Choose the map</strong><p>Prepare d.vect with the vector map name and display=shape in an active graphics frame.</p></li><li><strong>Filter the features</strong><p>Use cats for categories or where for an SQL condition, omitting the WHERE keyword.</p></li><li><strong>Set labels and colors</strong><p>Choose attribute_column for labels. Set feature and fill colors, or use -c for category-based random colors.</p></li><li><strong>Render the selection</strong><p>Run the assembled command. The library includes this example using the Spearfish soils map.</p></li></ol>
+                    <div class="knowledge-code"><span>Documented command</span><pre><code>d.vect -c map=soils where=&quot;label=&#x27;VBF&#x27;&quot; display=shape attribute_column=label</code></pre></div>
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-grass">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-grass">d.vect parameters</h4>
+                    <p class="knowledge-description">Shared parameter definitions for drawing and labeling vector features.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">GRASS GIS: d.vect parameters</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>map</code></th><td>Required vector map name; layer selects the attribute table and defaults to 1.</td></tr><tr><th scope="row"><code>display=shape</code></th><td>Draw feature geometry in the active graphics frame.</td></tr><tr><th scope="row"><code>where</code></th><td>SQL selection condition without the WHERE keyword.</td></tr><tr><th scope="row"><code>attribute_column</code></th><td>Attribute column whose values are displayed as labels.</td></tr><tr><th scope="row"><code>-c</code></th><td>Assign random colors by category; with layer=-1, use layer numbers.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="knowledge-panel-chimerax" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-chimerax" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>ChimeraX</h3>
+                <p>Molecular visualization</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-chimerax">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-chimerax">Show a selected residue as sticks</h4>
+                    <p class="knowledge-description">Use interactive selection to change the representation of one residue in a displayed structure.</p>
+                    <ol class="knowledge-steps"><li><strong>Select an atom</strong><p>With the default mouse assignment, Ctrl-click an atom in the desired residue to replace the previous selection.</p></li><li><strong>Expand to the residue</strong><p>Keep focus in the graphics window and press the up arrow once.</p></li><li><strong>Apply the representation</strong><p>Run style sel stick. The sel target limits the command to the current selection.</p></li></ol>
+                    <div class="knowledge-code"><span>Command for the current selection</span><pre><code>style sel stick</code></pre></div>
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-chimerax">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-chimerax">Target specification syntax</h4>
+                    <p class="knowledge-description">A common hierarchy identifies models, chains, residues, and atoms across commands.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">ChimeraX: Target specification syntax</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>#1</code></th><td>Model 1, including its submodels.</td></tr><tr><th scope="row"><code>/A</code></th><td>Chain A; chain IDs are generally case-insensitive unless both cases occur.</td></tr><tr><th scope="row"><code>:51</code></th><td>Residue number 51; a residue name can also follow the colon.</td></tr><tr><th scope="row"><code>@ca</code></th><td>Atoms named CA.</td></tr><tr><th scope="row"><code>sel</code></th><td>The current selection, reusable as a command target.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="knowledge-panel-lean" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-lean" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>Lean 4</h3>
+                <p>Formal reasoning</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-lean">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-lean">Prove an equality by induction</h4>
+                    <p class="knowledge-description">Prove 0 + n = n by following the recursive structure of natural-number addition.</p>
+                    <ol class="knowledge-steps"><li><strong>State the goal</strong><p>Introduce n : Nat and begin the theorem&#x27;s tactic proof with by.</p></li><li><strong>Split the cases</strong><p>Use induction n with to create zero and successor branches, naming the induction hypothesis ih.</p></li><li><strong>Close the base case</strong><p>Use rfl when the zero case reduces to reflexive equality.</p></li><li><strong>Rewrite the successor case</strong><p>Apply the successor equation and then the induction hypothesis with rw [Nat.add_succ, ih].</p></li></ol>
+                    <div class="knowledge-code"><span>Proof from the library</span><pre><code>namespace Hidden
+
+theorem zero_add (n : Nat) : 0 + n = n := by
+  induction n with
+  | zero =&gt; rfl
+  | succ n ih =&gt; rw [Nat.add_succ, ih]
+
+end Hidden</code></pre></div>
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-lean">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-lean">Tactic commands and goal effects</h4>
+                    <p class="knowledge-description">Reusable rules explain how individual tactics transform or close proof goals.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">Lean 4: Tactic commands and goal effects</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>by</code></th><td>Enter tactic mode where a proof term is expected.</td></tr><tr><th scope="row"><code>rfl</code></th><td>Close a reflexive relation when its arguments are definitionally equal.</td></tr><tr><th scope="row"><code>rw [h]</code></th><td>Use an equality to substitute in a goal or hypothesis.</td></tr><tr><th scope="row"><code>rw [h₁, h₂]</code></th><td>Apply several rewrites in sequence.</td></tr><tr><th scope="row"><code>apply / exact</code></th><td>Apply an expression and create remaining goals, or supply a term that fills the goal exactly.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div id="knowledge-panel-texstudio" class="knowledge-panel" role="tabpanel" aria-labelledby="knowledge-tab-texstudio" tabindex="0">
+              <div class="knowledge-panel-heading">
+                <h3>TeXstudio</h3>
+                <p>Scientific writing</p>
+              </div>
+              <div class="knowledge-pair">
+                <article class="knowledge-card knowledge-card-skill" aria-labelledby="knowledge-skill-texstudio">
+                  <header class="knowledge-card-header">
+                    <strong>Skill</strong><span>Reusable procedure</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-skill-texstudio">Keep pdfLaTeX output in a build folder</h4>
+                    <p class="knowledge-description">Route generated files into a subfolder and keep TeXstudio&#x27;s log and PDF lookup in sync.</p>
+                    <ol class="knowledge-steps"><li><strong>Open configuration</strong><p>Open Options → Configure TeXstudio and show advanced options if the settings are hidden.</p></li><li><strong>Set the output folder</strong><p>Under Commands, add -output-directory=build to the pdfLaTeX command.</p></li><li><strong>Update the log search path</strong><p>Under Build → Build options, add build as an additional search folder for log files.</p></li><li><strong>Update the PDF search path</strong><p>Add build for PDF files too. The documented Clean Auxiliary Files dialog does not clean files stored in a different folder this way.</p></li></ol>
+                    <div class="knowledge-code"><span>pdfLaTeX command argument</span><pre><code>-output-directory=build</code></pre></div>
+                  </div>
+                </article>
+                <article class="knowledge-card knowledge-card-reference" aria-labelledby="knowledge-reference-texstudio">
+                  <header class="knowledge-card-header">
+                    <strong>Reference</strong><span>On-demand lookup</span>
+                  </header>
+                  <div class="knowledge-card-body">
+                    <h4 id="knowledge-reference-texstudio">Tool command placeholders</h4>
+                    <p class="knowledge-description">Shared placeholders and modifiers used when configuring TeXstudio tool commands.</p>
+                    <table class="knowledge-reference-table">
+                      <caption class="sr-only">TeXstudio: Tool command placeholders</caption>
+                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>%</code></th><td>The root document&#x27;s filename without its extension.</td></tr><tr><th scope="row"><code>@</code></th><td>The current line number.</td></tr><tr><th scope="row"><code>[txs-app-dir]</code></th><td>The location of the TeXstudio executable.</td></tr><tr><th scope="row"><code>[txs-settings-dir]</code></th><td>The location of the texstudio.ini settings file.</td></tr><tr><th scope="row"><code>&amp;</code></th><td>As the final character, run the command detached without blocking later commands.</td></tr></tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <!-- knowledge-examples:end -->
         </div>
       </section>
 
