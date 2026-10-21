@@ -4,7 +4,7 @@
     "name": "KAlgebra",
     "domain": "Mathematics & plotting",
     "skillSource": "KALgebra/entries/kalgebra-skill-plot-an-explicit-function-of-x-and-y-in-3d/SKILL.md",
-    "referenceSource": "KALgebra/entries/kalgebra-reference-kalgebra-3d-plot-constraints-and-controls/content.md",
+    "referenceSource": "KALgebra/entries/kalgebra-reference-kalgebra-built-in-function-catalog/content.md",
     "skill": {
       "title": "Plot an explicit function in 3D",
       "description": "Turn a function of two variables into a 3D surface using the graph input.",
@@ -17,14 +17,17 @@
       "code": "(x,y)->sin(x)*sin(y)"
     },
     "reference": {
-      "title": "3D plot syntax and controls",
-      "description": "Input constraints, navigation controls, and export actions available across plotting tasks.",
+      "title": "Built-in function catalog",
+      "description": "Selected entries from the KAlgebra Reference: commands, parameter formats, and documented examples.",
+      "columns": ["Command", "Parameters", "Example"],
+      "codeColumns": [1, 2],
       "rows": [
-        ["(x,y)->x*y", "An explicit surface with z = x*y; only x and y are input variables."],
-        ["Mouse wheel", "Zoom in or out. W and S also control zoom."],
-        ["Left-button drag", "Rotate the graph; arrow keys rotate around the documented axes."],
-        ["Reset View", "Restore the original view and zoom from the 3D Graph menu."],
-        ["Ctrl+S", "Save the graph as an image or a supported document."]
+        ["power", "power(par1, par2)", "x->x^2"],
+        ["root", "root(par1, par2)", "x->root(x, 2)"],
+        ["sin", "sin(par1)", "x->sin(x)"],
+        ["cos", "cos(par1)", "x->cos(x)"],
+        ["abs", "abs(par1)", "x->abs(x)"],
+        ["diff", "diff(par1 : var)", "x->(diff(x^2:x))(x)"]
       ]
     }
   },
@@ -33,7 +36,7 @@
     "name": "Celestia",
     "domain": "Astronomy & simulation",
     "skillSource": "Celestia/entries/celestia-skill-find-and-observe-a-solar-or-lunar-eclipse/SKILL.md",
-    "referenceSource": "Celestia/entries/celestia-reference-celestia-1-6-1-time-controls-and-date-constra/content.md",
+    "referenceSource": "Celestia/entries/celestia-reference-celestia-1-6-1-display-and-render-settings/content.md",
     "skill": {
       "title": "Find and observe an eclipse",
       "description": "Locate a solar or lunar eclipse, travel to the event, and control its progression.",
@@ -45,14 +48,18 @@
       ]
     },
     "reference": {
-      "title": "Time controls and date settings",
-      "description": "Reusable key mappings distinguish the simulation rate from the selected date and time.",
+      "title": "Display and render settings",
+      "description": "Shared display options, parameter ranges, and visibility rules used across observation tasks.",
+      "columns": ["Setting", "Value / rule", "Meaning"],
+      "codeFirstColumn": false,
+      "tableKind": "settings",
       "rows": [
-        ["L / K", "Make time 10× faster or slower with each press."],
-        ["Shift+L / Shift+K", "Make time 2× faster or slower with each press."],
-        ["Spacebar / J", "Pause time, or reverse its direction."],
-        ["\\", "Return the simulation to the real-time rate."],
-        ["Set to Current time", "Restore the present date and time in the Set Time dialog."]
+        ["Ambient Light", "0–1.0; step: 0.05", "Adjusts illumination in shadowed regions."],
+        ["Stars Visible", "Limiting magnitude: 0–15.0", "Higher limits include fainter stars."],
+        ["Star Style", "Fuzzy Points / Points / Scaled Discs", "Three supported ways to draw stars."],
+        ["Equatorial Grid", "Right ascension (RA), declination (Dec)", "A sky grid based on Earth's equator."],
+        ["Horizontal Grid", "Azimuth, altitude", "A local sky grid that depends on the observer's location."],
+        ["Labels & Orbits", "Distance-sensitive", "Enabled labels and orbits may appear only as you approach."]
       ]
     }
   },
@@ -76,13 +83,22 @@
     },
     "reference": {
       "title": "d.vect parameters",
-      "description": "Shared parameter definitions for drawing and labeling vector features.",
+      "description": "Selected key=value parameters for input, filtering, styling, and labels.",
+      "columns": ["Parameter", "Value / default", "Purpose"],
+      "codeColumns": [1],
+      "tableKind": "parameters",
+      "tableHint": "10 selected parameters · Scroll to explore",
       "rows": [
-        ["map", "Required vector map name; layer selects the attribute table and defaults to 1."],
-        ["display=shape", "Draw feature geometry in the active graphics frame."],
-        ["where", "SQL selection condition without the WHERE keyword."],
-        ["attribute_column", "Attribute column whose values are displayed as labels."],
-        ["-c", "Assign random colors by category; with layer=-1, use layer numbers."]
+        ["map", "name (required)", "Vector map to display."],
+        ["layer", "string; default: 1", "Attribute-table layer number or name; -1 selects all layers."],
+        ["display", "shape (default)", "Draw geometry; other modes are cat, topo, vert, dir, and zcoor."],
+        ["type", "point,line,area,face (default)", "Select feature types; boundary and centroid are also supported."],
+        ["cats", "1,3,7-9,13 (example)", "Filter by category values or ranges."],
+        ["where", "sql_query", "Filter with an SQL condition, omitting the WHERE keyword."],
+        ["attribute_column", "name", "Column whose values appear as labels."],
+        ["color", "0:29:57 (default)", "Feature color: a named color, R:G:B triplet, or none."],
+        ["fill_color", "0:103:204 (default)", "Area fill color: a named color, R:G:B triplet, or none."],
+        ["label_size", "integer; default: 8", "Label size in pixels."]
       ]
     }
   },
@@ -105,13 +121,28 @@
     },
     "reference": {
       "title": "Target specification syntax",
-      "description": "A common hierarchy identifies models, chains, residues, and atoms across commands.",
+      "description": "Read targets from model to chain, residue, and atom. Combine these symbols in order to narrow the target.",
+      "columns": ["Level", "Syntax", "Example"],
+      "codeFirstColumn": false,
+      "codeColumns": [1, 2],
+      "tableKind": "hierarchy",
       "rows": [
-        ["#1", "Model 1, including its submodels."],
-        ["/A", "Chain A; chain IDs are generally case-insensitive unless both cases occur."],
-        [":51", "Residue number 51; a residue name can also follow the colon."],
-        ["@ca", "Atoms named CA."],
-        ["sel", "The current selection, reusable as a command target."]
+        ["Model", "#", "#1"],
+        ["Chain", "/", "/A"],
+        ["Residue", ":", ":51"],
+        ["Atom", "@", "@ca"]
+      ],
+      "notes": [
+        {
+          "title": "Example from the Reference",
+          "code": "#1,2:50,70-85@ca",
+          "text": "CA atoms in residues 50 and 70–85 of models 1 and 2."
+        },
+        {
+          "title": "Current selection",
+          "code": "sel",
+          "text": "Target the currently selected items, independently of the hierarchy above."
+        }
       ]
     }
   },
@@ -150,7 +181,10 @@
     "name": "TeXstudio",
     "domain": "Scientific writing",
     "skillSource": "TeXstudio/entries/texstudio-skill-configure-a-separate-pdflatex-build-folder-in-te/SKILL.md",
-    "referenceSource": "TeXstudio/entries/texstudio-reference-tool-command-placeholders-and-modifiers/content.md",
+    "referenceSources": [
+      "TeXstudio/entries/texstudio-skill-compile-a-latex-document-and-locate-reported-iss/SKILL.md",
+      "TeXstudio/entries/texstudio-skill-navigate-between-latex-source-and-pdf-with-synct/SKILL.md"
+    ],
     "skill": {
       "title": "Keep pdfLaTeX output in a build folder",
       "description": "Route generated files into a subfolder and keep TeXstudio's log and PDF lookup in sync.",
@@ -164,14 +198,15 @@
       "code": "-output-directory=build"
     },
     "reference": {
-      "title": "Tool command placeholders",
-      "description": "Shared placeholders and modifiers used when configuring TeXstudio tool commands.",
+      "title": "Build and navigation shortcuts",
+      "description": "Common shortcuts for compiling documents, viewing PDFs, and locating source positions or errors.",
+      "entryLabel": "Shortcut",
       "rows": [
-        ["%", "The root document's filename without its extension."],
-        ["@", "The current line number."],
-        ["[txs-app-dir]", "The location of the TeXstudio executable."],
-        ["[txs-settings-dir]", "The location of the texstudio.ini settings file."],
-        ["&", "As the final character, run the command detached without blocking later commands."]
+        ["F5", "Build & View: compile the document, then open the resulting PDF."],
+        ["F6", "Compile the current document using its configured compiler."],
+        ["F7", "Open the PDF viewer; with SyncTeX enabled, navigate to the current source position."],
+        ["Ctrl+left click", "With SyncTeX enabled, jump from a source word to its PDF position, or from the PDF back to the corresponding source."],
+        ["Ctrl+Shift+↑ / ↓", "Navigate to the previous or next reported error in the source and log."]
       ]
     }
   }

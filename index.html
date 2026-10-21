@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ScienceCUA: Resource-to-Skill Construction and Execution-Guided Skill Evolution for Scientific Computer Use Agents.">
     <title>ScienceCUA</title>
-    <link rel="stylesheet" href="styles.css?v=20261021-3">
+    <link rel="stylesheet" href="styles.css?v=20261021-8">
     <script src="contact.js" defer></script>
     <script src="evolution.js" defer></script>
     <script src="knowledge.js" defer></script>
@@ -193,13 +193,15 @@
                     <strong>Reference</strong><span>On-demand lookup</span>
                   </header>
                   <div class="knowledge-card-body">
-                    <h4 id="knowledge-reference-kalgebra">3D plot syntax and controls</h4>
-                    <p class="knowledge-description">Input constraints, navigation controls, and export actions available across plotting tasks.</p>
-                    <table class="knowledge-reference-table">
-                      <caption class="sr-only">KAlgebra: 3D plot syntax and controls</caption>
-                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
-                      <tbody><tr><th scope="row"><code>(x,y)-&gt;x*y</code></th><td>An explicit surface with z = x*y; only x and y are input variables.</td></tr><tr><th scope="row"><code>Mouse wheel</code></th><td>Zoom in or out. W and S also control zoom.</td></tr><tr><th scope="row"><code>Left-button drag</code></th><td>Rotate the graph; arrow keys rotate around the documented axes.</td></tr><tr><th scope="row"><code>Reset View</code></th><td>Restore the original view and zoom from the 3D Graph menu.</td></tr><tr><th scope="row"><code>Ctrl+S</code></th><td>Save the graph as an image or a supported document.</td></tr></tbody>
-                    </table>
+                    <h4 id="knowledge-reference-kalgebra">Built-in function catalog</h4>
+                    <p class="knowledge-description">Selected entries from the KAlgebra Reference: commands, parameter formats, and documented examples.</p>
+
+                    <div class="knowledge-reference-scroll" role="region" tabindex="0" aria-label="KAlgebra: Built-in function catalog"><table class="knowledge-reference-table knowledge-command-table">
+                      <caption class="sr-only">KAlgebra: Built-in function catalog</caption>
+                      <thead><tr><th scope="col">Command</th><th scope="col">Parameters</th><th scope="col">Example</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>power</code></th><td><code>power(par1, par2)</code></td><td><code>x-&gt;x^2</code></td></tr><tr><th scope="row"><code>root</code></th><td><code>root(par1, par2)</code></td><td><code>x-&gt;root(x, 2)</code></td></tr><tr><th scope="row"><code>sin</code></th><td><code>sin(par1)</code></td><td><code>x-&gt;sin(x)</code></td></tr><tr><th scope="row"><code>cos</code></th><td><code>cos(par1)</code></td><td><code>x-&gt;cos(x)</code></td></tr><tr><th scope="row"><code>abs</code></th><td><code>abs(par1)</code></td><td><code>x-&gt;abs(x)</code></td></tr><tr><th scope="row"><code>diff</code></th><td><code>diff(par1 : var)</code></td><td><code>x-&gt;(diff(x^2:x))(x)</code></td></tr></tbody>
+                    </table></div>
+
                   </div>
                 </article>
               </div>
@@ -226,13 +228,15 @@
                     <strong>Reference</strong><span>On-demand lookup</span>
                   </header>
                   <div class="knowledge-card-body">
-                    <h4 id="knowledge-reference-celestia">Time controls and date settings</h4>
-                    <p class="knowledge-description">Reusable key mappings distinguish the simulation rate from the selected date and time.</p>
-                    <table class="knowledge-reference-table">
-                      <caption class="sr-only">Celestia: Time controls and date settings</caption>
-                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
-                      <tbody><tr><th scope="row"><code>L / K</code></th><td>Make time 10× faster or slower with each press.</td></tr><tr><th scope="row"><code>Shift+L / Shift+K</code></th><td>Make time 2× faster or slower with each press.</td></tr><tr><th scope="row"><code>Spacebar / J</code></th><td>Pause time, or reverse its direction.</td></tr><tr><th scope="row"><code>\</code></th><td>Return the simulation to the real-time rate.</td></tr><tr><th scope="row"><code>Set to Current time</code></th><td>Restore the present date and time in the Set Time dialog.</td></tr></tbody>
-                    </table>
+                    <h4 id="knowledge-reference-celestia">Display and render settings</h4>
+                    <p class="knowledge-description">Shared display options, parameter ranges, and visibility rules used across observation tasks.</p>
+
+                    <div class="knowledge-reference-scroll" role="region" tabindex="0" aria-label="Celestia: Display and render settings"><table class="knowledge-reference-table knowledge-settings-table">
+                      <caption class="sr-only">Celestia: Display and render settings</caption>
+                      <thead><tr><th scope="col">Setting</th><th scope="col">Value / rule</th><th scope="col">Meaning</th></tr></thead>
+                      <tbody><tr><th scope="row">Ambient Light</th><td>0–1.0; step: 0.05</td><td>Adjusts illumination in shadowed regions.</td></tr><tr><th scope="row">Stars Visible</th><td>Limiting magnitude: 0–15.0</td><td>Higher limits include fainter stars.</td></tr><tr><th scope="row">Star Style</th><td>Fuzzy Points / Points / Scaled Discs</td><td>Three supported ways to draw stars.</td></tr><tr><th scope="row">Equatorial Grid</th><td>Right ascension (RA), declination (Dec)</td><td>A sky grid based on Earth&#x27;s equator.</td></tr><tr><th scope="row">Horizontal Grid</th><td>Azimuth, altitude</td><td>A local sky grid that depends on the observer&#x27;s location.</td></tr><tr><th scope="row">Labels &amp; Orbits</th><td>Distance-sensitive</td><td>Enabled labels and orbits may appear only as you approach.</td></tr></tbody>
+                    </table></div>
+
                   </div>
                 </article>
               </div>
@@ -260,12 +264,14 @@
                   </header>
                   <div class="knowledge-card-body">
                     <h4 id="knowledge-reference-grass">d.vect parameters</h4>
-                    <p class="knowledge-description">Shared parameter definitions for drawing and labeling vector features.</p>
-                    <table class="knowledge-reference-table">
+                    <p class="knowledge-description">Selected key=value parameters for input, filtering, styling, and labels.</p>
+                    <p class="knowledge-table-hint">10 selected parameters · Scroll to explore</p>
+                    <div class="knowledge-reference-scroll knowledge-parameter-scroll" role="region" tabindex="0" aria-label="GRASS GIS: d.vect parameters"><table class="knowledge-reference-table knowledge-parameter-table">
                       <caption class="sr-only">GRASS GIS: d.vect parameters</caption>
-                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
-                      <tbody><tr><th scope="row"><code>map</code></th><td>Required vector map name; layer selects the attribute table and defaults to 1.</td></tr><tr><th scope="row"><code>display=shape</code></th><td>Draw feature geometry in the active graphics frame.</td></tr><tr><th scope="row"><code>where</code></th><td>SQL selection condition without the WHERE keyword.</td></tr><tr><th scope="row"><code>attribute_column</code></th><td>Attribute column whose values are displayed as labels.</td></tr><tr><th scope="row"><code>-c</code></th><td>Assign random colors by category; with layer=-1, use layer numbers.</td></tr></tbody>
-                    </table>
+                      <thead><tr><th scope="col">Parameter</th><th scope="col">Value / default</th><th scope="col">Purpose</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>map</code></th><td><code>name (required)</code></td><td>Vector map to display.</td></tr><tr><th scope="row"><code>layer</code></th><td><code>string; default: 1</code></td><td>Attribute-table layer number or name; -1 selects all layers.</td></tr><tr><th scope="row"><code>display</code></th><td><code>shape (default)</code></td><td>Draw geometry; other modes are cat, topo, vert, dir, and zcoor.</td></tr><tr><th scope="row"><code>type</code></th><td><code>point,line,area,face (default)</code></td><td>Select feature types; boundary and centroid are also supported.</td></tr><tr><th scope="row"><code>cats</code></th><td><code>1,3,7-9,13 (example)</code></td><td>Filter by category values or ranges.</td></tr><tr><th scope="row"><code>where</code></th><td><code>sql_query</code></td><td>Filter with an SQL condition, omitting the WHERE keyword.</td></tr><tr><th scope="row"><code>attribute_column</code></th><td><code>name</code></td><td>Column whose values appear as labels.</td></tr><tr><th scope="row"><code>color</code></th><td><code>0:29:57 (default)</code></td><td>Feature color: a named color, R:G:B triplet, or none.</td></tr><tr><th scope="row"><code>fill_color</code></th><td><code>0:103:204 (default)</code></td><td>Area fill color: a named color, R:G:B triplet, or none.</td></tr><tr><th scope="row"><code>label_size</code></th><td><code>integer; default: 8</code></td><td>Label size in pixels.</td></tr></tbody>
+                    </table></div>
+
                   </div>
                 </article>
               </div>
@@ -293,12 +299,14 @@
                   </header>
                   <div class="knowledge-card-body">
                     <h4 id="knowledge-reference-chimerax">Target specification syntax</h4>
-                    <p class="knowledge-description">A common hierarchy identifies models, chains, residues, and atoms across commands.</p>
-                    <table class="knowledge-reference-table">
+                    <p class="knowledge-description">Read targets from model to chain, residue, and atom. Combine these symbols in order to narrow the target.</p>
+
+                    <div class="knowledge-reference-scroll" role="region" tabindex="0" aria-label="ChimeraX: Target specification syntax"><table class="knowledge-reference-table knowledge-hierarchy-table">
                       <caption class="sr-only">ChimeraX: Target specification syntax</caption>
-                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
-                      <tbody><tr><th scope="row"><code>#1</code></th><td>Model 1, including its submodels.</td></tr><tr><th scope="row"><code>/A</code></th><td>Chain A; chain IDs are generally case-insensitive unless both cases occur.</td></tr><tr><th scope="row"><code>:51</code></th><td>Residue number 51; a residue name can also follow the colon.</td></tr><tr><th scope="row"><code>@ca</code></th><td>Atoms named CA.</td></tr><tr><th scope="row"><code>sel</code></th><td>The current selection, reusable as a command target.</td></tr></tbody>
-                    </table>
+                      <thead><tr><th scope="col">Level</th><th scope="col">Syntax</th><th scope="col">Example</th></tr></thead>
+                      <tbody><tr><th scope="row">Model</th><td><code>#</code></td><td><code>#1</code></td></tr><tr><th scope="row">Chain</th><td><code>/</code></td><td><code>/A</code></td></tr><tr><th scope="row">Residue</th><td><code>:</code></td><td><code>:51</code></td></tr><tr><th scope="row">Atom</th><td><code>@</code></td><td><code>@ca</code></td></tr></tbody>
+                    </table></div>
+                    <div class="knowledge-reference-note"><h5>Example from the Reference</h5><code>#1,2:50,70-85@ca</code><p>CA atoms in residues 50 and 70–85 of models 1 and 2.</p></div><div class="knowledge-reference-note"><h5>Current selection</h5><code>sel</code><p>Target the currently selected items, independently of the hierarchy above.</p></div>
                   </div>
                 </article>
               </div>
@@ -334,11 +342,13 @@ end Hidden</code></pre></div>
                   <div class="knowledge-card-body">
                     <h4 id="knowledge-reference-lean">Tactic commands and goal effects</h4>
                     <p class="knowledge-description">Reusable rules explain how individual tactics transform or close proof goals.</p>
+
                     <table class="knowledge-reference-table">
                       <caption class="sr-only">Lean 4: Tactic commands and goal effects</caption>
                       <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
                       <tbody><tr><th scope="row"><code>by</code></th><td>Enter tactic mode where a proof term is expected.</td></tr><tr><th scope="row"><code>rfl</code></th><td>Close a reflexive relation when its arguments are definitionally equal.</td></tr><tr><th scope="row"><code>rw [h]</code></th><td>Use an equality to substitute in a goal or hypothesis.</td></tr><tr><th scope="row"><code>rw [h₁, h₂]</code></th><td>Apply several rewrites in sequence.</td></tr><tr><th scope="row"><code>apply / exact</code></th><td>Apply an expression and create remaining goals, or supply a term that fills the goal exactly.</td></tr></tbody>
                     </table>
+
                   </div>
                 </article>
               </div>
@@ -365,13 +375,15 @@ end Hidden</code></pre></div>
                     <strong>Reference</strong><span>On-demand lookup</span>
                   </header>
                   <div class="knowledge-card-body">
-                    <h4 id="knowledge-reference-texstudio">Tool command placeholders</h4>
-                    <p class="knowledge-description">Shared placeholders and modifiers used when configuring TeXstudio tool commands.</p>
+                    <h4 id="knowledge-reference-texstudio">Build and navigation shortcuts</h4>
+                    <p class="knowledge-description">Common shortcuts for compiling documents, viewing PDFs, and locating source positions or errors.</p>
+
                     <table class="knowledge-reference-table">
-                      <caption class="sr-only">TeXstudio: Tool command placeholders</caption>
-                      <thead><tr><th scope="col">Entry</th><th scope="col">Meaning / constraint</th></tr></thead>
-                      <tbody><tr><th scope="row"><code>%</code></th><td>The root document&#x27;s filename without its extension.</td></tr><tr><th scope="row"><code>@</code></th><td>The current line number.</td></tr><tr><th scope="row"><code>[txs-app-dir]</code></th><td>The location of the TeXstudio executable.</td></tr><tr><th scope="row"><code>[txs-settings-dir]</code></th><td>The location of the texstudio.ini settings file.</td></tr><tr><th scope="row"><code>&amp;</code></th><td>As the final character, run the command detached without blocking later commands.</td></tr></tbody>
+                      <caption class="sr-only">TeXstudio: Build and navigation shortcuts</caption>
+                      <thead><tr><th scope="col">Shortcut</th><th scope="col">Meaning / constraint</th></tr></thead>
+                      <tbody><tr><th scope="row"><code>F5</code></th><td>Build &amp; View: compile the document, then open the resulting PDF.</td></tr><tr><th scope="row"><code>F6</code></th><td>Compile the current document using its configured compiler.</td></tr><tr><th scope="row"><code>F7</code></th><td>Open the PDF viewer; with SyncTeX enabled, navigate to the current source position.</td></tr><tr><th scope="row"><code>Ctrl+left click</code></th><td>With SyncTeX enabled, jump from a source word to its PDF position, or from the PDF back to the corresponding source.</td></tr><tr><th scope="row"><code>Ctrl+Shift+↑ / ↓</code></th><td>Navigate to the previous or next reported error in the source and log.</td></tr></tbody>
                     </table>
+
                   </div>
                 </article>
               </div>
