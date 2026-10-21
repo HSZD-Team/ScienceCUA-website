@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ScienceCUA: Resource-to-Skill Construction and Execution-Guided Skill Evolution for Scientific Computer Use Agents.">
     <title>ScienceCUA</title>
-    <link rel="stylesheet" href="styles.css?v=20261020-5">
+    <link rel="stylesheet" href="styles.css?v=20261021-3">
     <script src="contact.js" defer></script>
     <script src="evolution.js" defer></script>
     <script src="knowledge.js" defer></script>
+    <script src="build-skills.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -81,7 +82,7 @@
               <span class="button-icon hf-icon" aria-hidden="true">HF</span>
               Evaluation Environment
             </a>
-            <a class="button" href="http://127.0.0.1:8000/">
+            <button class="button build-skills-button" id="build-skills-trigger" type="button" aria-haspopup="dialog" aria-controls="build-skills-dialog" aria-expanded="false">
               <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 8h4V6a2 2 0 0 1 4 0v2h4v4h2a2 2 0 0 1 0 4h-2v4h-4v-2a2 2 0 0 0-4 0v2H4v-4h2a2 2 0 0 0 0-4H4Z"/>
               </svg>
@@ -89,7 +90,7 @@
               <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <path d="M6 18 18 6M6 6h12v12"/>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -1005,6 +1006,75 @@ end Hidden</code></pre></div>
         </div>
       </section>
     </main>
+
+    <dialog class="build-skills-dialog" id="build-skills-dialog" aria-labelledby="build-skills-title" lang="en">
+      <div class="build-skills-panel">
+        <header class="build-skills-header">
+          <p class="build-skills-eyebrow">ScienceCUA / Build Skills</p>
+          <h2 id="build-skills-title" tabindex="-1" autofocus>Welcome to ScienceCUA Build Skills</h2>
+          <button class="build-skills-close" type="button" aria-label="Close introduction">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+          </button>
+        </header>
+
+        <div class="build-skills-content">
+          <div class="build-skills-languages" role="tablist" aria-label="Introduction language">
+            <button id="build-skills-tab-en" type="button" role="tab" aria-selected="true" aria-controls="build-skills-intro-en" lang="en">English</button>
+            <button id="build-skills-tab-zh" type="button" role="tab" aria-selected="false" aria-controls="build-skills-intro-zh" tabindex="-1" lang="zh-CN">中文</button>
+          </div>
+
+          <div id="build-skills-intro-en" class="build-skills-intro" role="tabpanel" aria-labelledby="build-skills-tab-en" lang="en" tabindex="0">
+            <ol class="build-skills-notes">
+              <li>
+                <h3>Build knowledge from documentation</h3>
+                <p>Upload human-authored PDF documents or provide HTML web pages, and let ScienceCUA organize their software knowledge into reusable <strong>Skills</strong> and <strong>References</strong> for on-demand lookup.</p>
+              </li>
+              <li>
+                <h3>Configure your API key</h3>
+                <p>The online service requires your own model provider API key. We take your key’s security seriously and are committed to protecting it. We will not publish your key or disclose it to unauthorized third parties.</p>
+              </li>
+              <li>
+                <h3>Self-hosting is also available</h3>
+                <p>If you prefer to run the system in your own environment, you can deploy our <a href="https://github.com/HSZD-Team/ScienceCUA" target="_blank" rel="noopener noreferrer">open-source code</a> locally and manage your API keys and input materials yourself.</p>
+              </li>
+              <li>
+                <h3>Feedback and contributions are welcome</h3>
+                <p>We’re sorry if our pipeline or its outputs fall short of your expectations. Please open a <a href="https://github.com/HSZD-Team/ScienceCUA/issues" target="_blank" rel="noopener noreferrer">GitHub Issue</a> to report problems or share suggestions. Code improvements and Pull Requests are also welcome as we continue improving ScienceCUA together.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div id="build-skills-intro-zh" class="build-skills-intro" role="tabpanel" aria-labelledby="build-skills-tab-zh" lang="zh-CN" tabindex="0" hidden>
+            <ol class="build-skills-notes">
+              <li>
+                <h3>从文档构建知识</h3>
+                <p>上传人类编写的 PDF 文档或提供 HTML 网页，让 ScienceCUA 将其中的软件知识整理为可复用的 <strong>Skills</strong> 和可按需查询的 <strong>References</strong>。</p>
+              </li>
+              <li>
+                <h3>配置您的 API 密钥</h3>
+                <p>在线体验需要您填写自己的模型服务 API 密钥。我们重视您的密钥安全，并承诺妥善保护，不公开或向未经授权的第三方披露您的密钥。</p>
+              </li>
+              <li>
+                <h3>也可选择本地部署</h3>
+                <p>如果您更希望在自己的环境中使用，欢迎通过已<a href="https://github.com/HSZD-Team/ScienceCUA" target="_blank" rel="noopener noreferrer">开源的代码</a>进行本地部署，自行管理 API 密钥和输入资料。</p>
+              </li>
+              <li>
+                <h3>欢迎反馈与贡献</h3>
+                <p>如果我们的流程或生成结果未达到您的预期，我们深感抱歉。欢迎在 GitHub <a href="https://github.com/HSZD-Team/ScienceCUA/issues" target="_blank" rel="noopener noreferrer">提交 Issue</a>，反馈问题或提出建议；也欢迎改进代码、提交 Pull Request，与我们一起完善 ScienceCUA。</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <footer class="build-skills-actions">
+          <button class="button build-skills-back" type="button">Back</button>
+          <a class="button primary build-skills-continue" href="https://helpful-enters-particles-four.trycloudflare.com/">
+            <span>Continue</span>
+            <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </footer>
+      </div>
+    </dialog>
 
     <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
       <div class="contact-panel">
